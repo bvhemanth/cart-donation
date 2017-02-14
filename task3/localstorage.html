@@ -21,6 +21,15 @@
     </style>
     <script>
         var cart = [];
+        var items_ids=[]
+        items_ids.push({'id':"0",'name':'Pants'});
+        items_ids.push({'id':"1",'name':'Shirts'});
+        items_ids.push({'id':"2",'name':'Track Pants'});
+        items_ids.push({'id':"3",'name':'Foot Wear'});
+        items_ids.push({'id':"4",'name':'Mobiles'});
+        items_ids.push({'id':"5",'name':'Wallets'});
+        items_ids.push({'id':"6",'name':'Watches'});
+        items_ids.push({'id':"7",'name':'LED TV'});
         $(function () {
             if (localStorage.cart)
             {
@@ -30,13 +39,14 @@
         });
         function addToCart() {
             var name = $("#items option:selected").text();
+            var id=$("#items option:selected").val();
             var qty = $("#qty").val();
             if(name=="Select product")
             {
                 return ;
             }
             for (var i in cart) {
-                if(cart[i].Product == name)
+                if(cart[i].key == id)
                 {
                     cart[i].Qty = qty;
                     showCart();
@@ -44,13 +54,15 @@
                     return;
                 }
             }
-            var item = { Product: name, Qty: qty }; 
+            var item = { key: id, Qty: qty }; 
             cart.push(item);
             saveCart();
             showCart();
         }
         function deleteItem(index){
+             alert(JSON.stringify(cart));    
             cart.splice(index,1); 
+             alert(JSON.stringify(cart));
             showCart();
             saveCart();
         }
@@ -69,10 +81,12 @@
             $("#cartBody").empty();
             for (var i in cart) {
                 var item = cart[i];
+                var ids=cart[i].key;
+                alert(ids);
                 var row_no=parseInt(i)+parseInt(1);
-                var row = "<tr id='item_row'><td>"+row_no+"</td><td>"+ item.Product + "</td><td>" +
+                var row = "<tr id='item_row'><td>"+row_no+"</td><td>"+items_ids[ids].name+ "</td><td>" +
                            + item.Qty + "</td><td>"
-                             + "<button class='btn btn-sm'onclick='deleteItem(" + i + ")'>Remove</button></td></tr>";
+                             + "<button class='btn btn-sm'onclick='deleteItem(" + items_ids[ids].key+ ")'>Remove</button></td></tr>";
                 $("#cartBody").append(row);
             }
         }
@@ -88,14 +102,14 @@
         <div class="col-md-4 col-sm-4 col-lg-4">
         <select id="items" class="form-control">
             <option value="select">Select product</option>
-            <option value="pants">Pants</option>
-            <option value="shirts">Shirts</option>
-            <option value="track">Track Pants</option>
-            <option value="foot">Foot Wear</option>    
-            <option value="mobile">Mobiles</option>
-            <option value="wallets">Wallets</option>
-            <option value="watches">Watches</option>
-            <option value="tv">LED TV</option>
+            <option id="0" value="0">Pants</option>
+            <option id="1" value="1">Shirts</option>
+            <option id="2" value="2">Track Pants</option>
+            <option id="3" value="3">Foot Wear</option>    
+            <option id="4" value="4">Mobiles</option>
+            <option id="5" value="5">Wallets</option>
+            <option id="6" value="6">Watches</option>
+            <option id="7" value="7">LED TV</option>
         </select>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
