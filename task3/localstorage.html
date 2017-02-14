@@ -60,9 +60,7 @@
             showCart();
         }
         function deleteItem(index){
-             alert(JSON.stringify(cart));    
             cart.splice(index,1); 
-             alert(JSON.stringify(cart));
             showCart();
             saveCart();
         }
@@ -82,11 +80,10 @@
             for (var i in cart) {
                 var item = cart[i];
                 var ids=cart[i].key;
-                alert(ids);
                 var row_no=parseInt(i)+parseInt(1);
                 var row = "<tr id='item_row'><td>"+row_no+"</td><td>"+items_ids[ids].name+ "</td><td>" +
                            + item.Qty + "</td><td>"
-                             + "<button class='btn btn-sm'onclick='deleteItem(" + items_ids[ids].key+ ")'>Remove</button></td></tr>";
+                             + "<button class='btn btn-sm'onclick='deleteItem(" + i+ ")'>Remove</button></td></tr>";
                 $("#cartBody").append(row);
             }
         }
