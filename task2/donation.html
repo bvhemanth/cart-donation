@@ -76,30 +76,36 @@
 
                 var prev_1=document.getElementById("myProgress").value;
                 var diff=1000-prev_1;    
+				if(diff<0)
+				{
+					return false;
+				}
                 $("#thought").text("$ "+ diff +" Still needed for this project");
                 $(gv_button).on('click',function(){
-                    var prev=document.getElementById("myProgress").value;  
-                        if(prev<1000)
-                        {
-                          var add=100;
-                          var val_ip=prev+add;
-                            $("#myProgress").val(val_ip);
-                            $("#ip").val("$ "+val_ip);
-
-                             var diff=1000-val_ip; 
-                            if(diff!=0)
-                            { 
-                              $("#thought").text("$ "+ diff +" Still needed for this project");
-                            }
-                            if(diff===0)
-                            {
-                              $("#thought").text("Enough with donation");
-                            }  
+                    var prev=document.getElementById("myProgress").value; 
+                    if(prev<1000)
+                    {
+                        var add=$('#ip').val();
+						var intStr = add.replace(/[A-Za-z$-]/g, "");
+                        var val_ip=parseInt(prev)+parseInt(intStr);
+                        var diff=1000-val_ip; 
+						if(diff<0)
+						{return false;}
+                        if(diff>0)
+                        { 	
+							$("#myProgress").val(val_ip);
+						    $("#thought").text("$ "+ diff +" Still needed for this project");
                         }
-                        else
+                        if(diff===0)
                         {
-                          return false;
-                        }
+							$("#myProgress").val(val_ip);
+							$("#thought").text("Enough with donation");
+                        }  
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 });
         });
   </script>
