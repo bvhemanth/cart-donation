@@ -9,6 +9,7 @@
    <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .row{margin-right: 0px;margin-left: 0px;}
     #myProgress
     {background-color:#f1f1f1!important;}
     #myProgress::-webkit-progress-bar {
@@ -23,7 +24,7 @@
     #left{color: #f15e33;}
     #main{
       border:1px solid #ddd;
-      width:375px;
+      /*width:375px;*/
       line-height:30px;}
     .t_c{color:#828282;}
     .below_status{
@@ -34,16 +35,17 @@
     p{font-size:20px}
     #gv_button{
         background-color:#00be1c;border-radius:5px;border:1px solid #00be1c;color:#fff;
-        width:120px; float:right;font-size:15px;font-weight:bold;}
+         font-size:15px;font-weight:bold;}
     .ip{border-radius:4px;font-size:20px;}
     a{text-decoration:none;color:#0ea0d6;font-size:16px;}
     a:hover{text-decoration: none;}
     a:active{text-decoration: none;}
     button{cursor:pointer;}
     .t_a_c{text-align: center;}
+    .p_r_l0{padding-left: 0px; padding-right: 0px;}
     p.thought {
     position:relative; 
-    width:375px; 
+   /* width:375px; */
     background:#424242; 
     padding:15px;
     margin:20px 0 20px 0px;
@@ -57,102 +59,103 @@
     content:"";
     position:absolute; 
     bottom:-20px; 
-    left:245px; 
+    float:right;
     border-width:20px 20px 0 20px;
     border-style:solid;
-    border-color:#424242 transparent; /
+    border-color:#424242 transparent;
     display:block;
     } 
-    .col_r_r0
-    {
-      padding-left:0px;
-      padding-right: 0px;
-    }
-    .row{margin-left: 0px;margin-right: 0px;}
+    .p_r_0{padding-right: 0px;padding-left:10px; }
+    .p_l_0{padding-right: 10px;padding-left:0px;}
+    .container{width:100%;padding-right:5px;padding-left: 5px;}
   </style>
   <script>
-      $(document).ready(function(){
+       $(document).ready(function(){
+         
             var s_b=document.getElementById('save');
-                $(s_b).on('click',function(){$('.modal-body').text('Saved!');});
-                var friend=document.getElementById('friends');
-                $(friend).on('click',function(){
-                  $('.modal-body').text('Yay, I donated!');
-                });
-                var gv_button=document.getElementById('gv_button'); 
+            $(s_b).on('click',function(){$('.modal-body').text('Saved!');});
+            var friend=document.getElementById('friends');
+            $(friend).on('click',function(){
+              $('.modal-body').text('Yay, I donated!');
+            });
+            var gv_button=document.getElementById('gv_button'); 
 
-                var prev_1=document.getElementById("myProgress").value;
-                var diff=1000-prev_1;    
-				if(diff<0)
-				{
-					return false;
-				}
-                $("#thought").text("$ "+ diff +" Still needed for this project");
-                $(gv_button).on('click',function(){
-                    var prev=document.getElementById("myProgress").value; 
-                    if(prev<1000)
-                    {
-                        var add=$('#ip').val();
-						var intStr = add.replace(/[A-Za-z$-]/g, "");
-                        var val_ip=parseInt(prev)+parseInt(intStr);
-                        var diff=1000-val_ip; 
-						if(diff<0)
-						{return false;}
-                        if(diff>0)
-                        { 	
-							$("#myProgress").val(val_ip);
-						    $("#thought").text("$ "+ diff +" Still needed for this project");
-                        }
-                        if(diff===0)
-                        {
-							$("#myProgress").val(val_ip);
-							$("#thought").text("Enough with donation");
-                        }  
+            var prev_1=document.getElementById("myProgress").value;
+            var diff=1000-prev_1;    
+            if(diff<0)
+            {
+              return false;
+            }
+            $("#thought").text("$ "+ diff +" Still needed for this project");
+            $(gv_button).on('click',function(){
+                var prev=document.getElementById("myProgress").value; 
+                if(prev<1000)
+                {
+                    var add=$('#ip').val();
+                    var intStr = add.replace(/[A-Za-z$-]/g, "");
+                    var val_ip=parseInt(prev)+parseInt(intStr);
+                    var diff=1000-val_ip; 
+                    if(diff<0)
+                    {return false;}
+                    if(diff>0)
+                    {   
+                      $("#myProgress").val(val_ip);
+                      $("#thought").text("$ "+ diff +" Still needed for this project");
                     }
-                    else
+                    if(diff===0)
                     {
-                        return false;
-                    }
-                });
+                      $("#myProgress").val(val_ip);
+                      $("#thought").text("Enough with donation");
+                    }  
+                }
+                else
+                {
+                    return false;
+                }
+            });
         });
   </script>
 </head>
 
 <body>
+<div class="container">  
 <div class="row">
-  <div class="col-md-3 col-sm-3 col-lg-3 col_r_r0"></div>
-  <div class="col-md-6 col-lg-6 col-sm-6 col_r_r0">
+  <div class="col-md-4 col-sm-4 col-lg-4 p_r_l0"></div>
+  <div class="col-md-4 col-lg-4 col-sm-4 p_r_l0">
   <div id="top">
         <p class="thought t_c t_a_c" id="thought"></p>
     </div>
   <div id="main">
-        <progress id="myProgress"  value="200" max="1000" style="width:100%;height:20px;">
-    </progress>
+        <progress id="myProgress"  value="200" max="1000" style="width:100%;height:20px;"></progress>
         <div class="below_status">
              <p>
                 <span id="left">only 3 days left </span> found this project
              </p>
-             <p class="t_c">
-             Join the 42 other donars who have already supported this project. Every dollar helps.
-             </p> 
-            <div style="width:100%;height:50px;">
-                 <div class="ip_div">
-                      <input class="ip" id="ip" style="width:120px; float:left;height:50px;"type="text" value="$ 200">
+             <div class="row">
+                <p class="t_c">
+                  Join the 42 other donars who have already supported this project. Every dollar helps.
+                </p>
+              </div>   
+              <div class="row" style="height:50px;">
+                 <div class="ip_div col-md-6 col-sm-6 col-lg-6">
+                      <input class="ip form-control" id="ip" style="height:50px;" type="text" value="$ 200"/>
                  </div>
-                 <div class="gv_button">
-                      <button id="gv_button" style="height:50px;"class="btn btn-success">Give Now</button>
+                 <div class="gv_button col-md-6 col-sms-6 col-lg-6">
+                      <button id="gv_button" style="height:50px;" class="btn btn-success form-control">Give Now</button>
                  </div>
              </div>
-             <div style="padding-top:10px;">  
+        </div> 
+        <div style="padding-top:10px;padding-left: 30px;" class="row">  
                 <p><a href="https://www.loktra.com/"><i> Why give $50?</i></a></p>
-             </div>
-        </div>  
+        </div> 
     </div>
-    <div id="lst_div" style="width:375px;height:50px;margin-top:20px;">
-           <div class="">
-                <button id="save" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="width:120px; float:left;height:50px;"><b>Save for later</b></button>
+
+    <div id="lst_div" class="row" style="height:50px;margin-top:20px;">
+           <div class="col-md-6 col-xs-6 col-lg-6 p_r_l0">
+                <button id="save" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="height:50px;"><b>Save for later</b></button>
            </div>
-           <div class="gv_button">
-                <button id="friends" style="height:50px; float:right" data-toggle="modal" data-target="#myModal" class="btn btn-default"><b>Tell Your friends</b></button>
+           <div class="gv_button col-md-6 col-xs-6 col-lg-6 p_r_l0">
+                <button id="friends" style="height:50px;" data-toggle="modal" data-target="#myModal" class="btn btn-default pull-right"><b>Tell Your friends</b></button>
           </div>
     </div>
     <div class="modal fade" id="myModal" role="dialog">
@@ -173,7 +176,8 @@
     </div>
   </div>
   </div>  
-   <div class="col-md-3 col-sm-3 col-lg-3 col_r_r0"></div> 
+   <div class="col-md-4 col-sm-4 col-lg-4 p_r_l0"></div> 
+  </div>
   </div>
 </body>
 </html>

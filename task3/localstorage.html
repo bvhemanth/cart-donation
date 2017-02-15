@@ -10,14 +10,14 @@
         .t_a_c{text-align: center;}
         td { text-align :center}
         .row{margin-left: 0px;margin-right: 0px;}
-         table { border-collapse: collapse;}
-        thead>tr>th{text-align: center; padding:5px 10px;background-color:#18aac4; color:#fff;}
+         table { border-collapse: collapse;width:100%;}
+        thead>tr>th{text-align: center; padding:5px 10px;background-color:#18aac4; color:#fff;font-size: 20px;}
         tbody>tr:hover{background-color:#bfe9f1;cursor: pointer;} 
-        tbody>tr>td{padding:5px 10px;}  
+        tbody>tr>td{padding:5px 10px;font-weight:bold;}  
         .btn{background-color: #18aac4;border: 1px solid #18aac4;color:#fff;}
         .btn:visited{background-color: #18aac4;border: 1px solid #18aac4;}
         .btn:hover{background-color: #18aac4;border: 1px solid #18aac4;}
-        .m_t_20{margin-top: 20px;}
+        .m_t_20{margin-top: 18px;}
     </style>
     <script>
         var cart = [];
@@ -81,7 +81,7 @@
                 var item = cart[i];
                 var ids=cart[i].key;
                 var row_no=parseInt(i)+parseInt(1);
-                var row = "<tr id='item_row'><td>"+row_no+"</td><td>"+items_ids[ids].name+ "</td><td>" +
+                var row = "<tr id='item_row'><td>"+row_no+"</td><td>"+ items_ids[ids].name + "</td><td>" +
                            + item.Qty + "</td><td>"
                              + "<button class='btn btn-sm'onclick='deleteItem(" + i+ ")'>Remove</button></td></tr>";
                 $("#cartBody").append(row);
@@ -90,6 +90,7 @@
     </script>
 </head>
 <body>
+    <div class="container">
     <div class="row t_a_c m_t_20">
           <p style="font-size: 25px;"><i class="fa fa-shopping-cart" style="color:black;" aria-hidden="true"></i> Cart</p>
     </div>
@@ -97,7 +98,7 @@
         <div class="col-md-2 col-sm-2 col-lg-2">
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-        <select id="items" class="form-control">
+        <select id="items" class="form-control" style="font-size: 20px; height:45px;">
             <option value="select">Select product</option>
             <option id="0" value="0">Pants</option>
             <option id="1" value="1">Shirts</option>
@@ -110,17 +111,17 @@
         </select>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
-        <input type="text" class="form-control" id="qty" placeholder="Quantity" size="3" />
+        <input type="text" class="form-control" style="height:45px;" id="qty" placeholder="Quantity" size="3" />
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2">
         </div>
     </div>
     <div class="row t_a_c m_t_20">
-    <button id="btnAdd" class="btn" onclick="addToCart()" >Save and Add </button>
+    <button id="btnAdd" class="btn" onclick="addToCart()" style="font-size: 18px;"><b>Save and Add</b></button>
     </div>
     <div class="row m_t_20">
         <div class="col-md-2 col-sm-2 col-lg-2"></div> 
-        <div class="col-md-8 col-xs-8 col-lg-8">
+        <div class="col-md-8 col-sm-8 col-lg-8">
             <table id="cart" border="1" style="visibility:hidden; width:100%">
                 <thead>
                     <tr>
@@ -136,7 +137,8 @@
             </table>
         </div>
         <div class="col-md-2 col-sm-2 col-lg-2"></div> 
-    </div>    
+    </div>   
+    </div> 
 </body>
 </html>
     
