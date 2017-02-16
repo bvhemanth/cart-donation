@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <head>
     <title>Cart LocalStorage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -18,6 +19,8 @@
         .btn:visited{background-color: #18aac4;border: 1px solid #18aac4;}
         .btn:hover{background-color: #18aac4;border: 1px solid #18aac4;}
         .m_t_20{margin-top: 18px;}
+        .container{width:100%;padding-right:5px;padding-left: 5px;} 
+        .pad_l_r0{padding-left: 0px;padding-right: 0px;}
     </style>
     <script>
         var cart = [];
@@ -95,9 +98,7 @@
           <p style="font-size: 25px;"><i class="fa fa-shopping-cart" style="color:black;" aria-hidden="true"></i> Cart</p>
     </div>
     <div class="row m_t_20">
-        <div class="col-md-2 col-sm-2 col-lg-2">
-        </div>
-        <div class="col-md-4 col-sm-4 col-lg-4">
+        <div class="col-md-6 col-sm-6 col-lg-6 pad_l_r0">
         <select id="items" class="form-control" style="font-size: 20px; height:45px;">
             <option value="select">Select product</option>
             <option id="0" value="0">Pants</option>
@@ -110,18 +111,17 @@
             <option id="7" value="7">LED TV</option>
         </select>
         </div>
-        <div class="col-md-4 col-sm-4 col-lg-4">
+        <div class="col-md-6 col-sm-6 col-lg-6 pad_l_r0">
         <input type="text" class="form-control" style="height:45px;" id="qty" placeholder="Quantity" size="3" />
         </div>
-        <div class="col-md-2 col-sm-2 col-lg-2">
-        </div>
+     
     </div>
     <div class="row t_a_c m_t_20">
     <button id="btnAdd" class="btn" onclick="addToCart()" style="font-size: 18px;"><b>Save and Add</b></button>
     </div>
     <div class="row m_t_20">
-        <div class="col-md-2 col-sm-2 col-lg-2"></div> 
-        <div class="col-md-8 col-sm-8 col-lg-8">
+        <div class="col-md-2 col-sm-2 col-lg-2 pad_l_r0"></div> 
+        <div class="col-md-8 col-sm-8 col-lg-8 pad_l_r0">
             <table id="cart" border="1" style="visibility:hidden; width:100%">
                 <thead>
                     <tr>
@@ -136,7 +136,7 @@
                  </tbody>
             </table>
         </div>
-        <div class="col-md-2 col-sm-2 col-lg-2"></div> 
+        <div class="col-md-2 col-sm-2 col-lg-2 pad_l_r0"></div> 
     </div>   
     </div> 
 </body>
