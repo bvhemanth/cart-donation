@@ -1,0 +1,54 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="mov.js"></script>
+		<style>
+			#top_row
+			{
+				margin-top:20px;
+				background-image:url('https://c.stocksy.com/a/RcN300/z0/805779.jpg');
+				background-size:cover;
+				height:100px;
+			}
+			#library
+			{
+				margin-top:20px;
+				padding: 10px 10px 10px 10px;
+			}
+			img {
+				display:block;
+				margin:auto;
+			}
+			.results_title{color:}
+			.row{margin-left:0px;margin-right:0px;}
+			.col_l_r0{padding-left:0px;padding-right:0px;}
+			.container{width:100%;padding-left:10px;padding-right:10px;}
+			.form-control{border-radius: 20px;}
+			.btn:visited{border-radius: 20px;}
+			.btn:focus, .btn:active:focus, .btn.active:focus {
+				outline: 0 none;
+			}
+			.ip_search_btn
+			{
+				padding-top:30px;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<div class="row ip_search_btn" id="top_row">
+		   <!--<div class="col-md-4 col-lg-4 col-sm-4 col_l_r0"></div>-->
+		   <div class="col-md-8 col-lg-8 col-sm-8 "><input type="text" placeholder="Search movie...." class="form-control" id="mov_ip"></div>
+		   <div class="col-md-4 col-lg-4 col-sm-4"><button class="btn btn-success form-control" id="search"><i class="fa fa-search" aria-hidden="true"></i> Search</button></div>
+		</div><!--for search-->
+		<div class="row" id="library">
+			
+				
+		</div><!--for libtrary-->
+	</div>
+	</body>
+</html>
