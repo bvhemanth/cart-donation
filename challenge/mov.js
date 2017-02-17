@@ -3,8 +3,9 @@ var movies=[];
 $(document).ready(function(){
            
 	$('#search').on('click',function(){
-                $('#search').prop("disabled",true);
+         $('#search').prop("disabled",true);
 		var movie_name=$('#mov_ip').val();
+		$('#library').addClass('opacity_lib');
 		get_data(movie_name);
 	});
 });
@@ -21,7 +22,9 @@ function get_data(movie_name)
 		{	
 			if(!data.Error)
 			{	
+
                 $('#search').prop("disabled",false);               
+				$('#library').removeClass('opacity_lib');
 				var movie_details=document.getElementById('library');
 				$(movie_details).html('');
 				movies.push(data);
@@ -31,12 +34,14 @@ function get_data(movie_name)
 			{
 				alert(data.Error);
                 $('#search').prop("disabled",false);
+                $('#library').removeClass('opacity_lib');
                 return false;
 			}		
 		},
 		error: function(xhr, status, error) {
 		  var err = eval("(" + xhr.responseText + ")");
 		  $('#search').prop("disabled",false);
+		  $('#library').removeClass('opacity_lib');
 		  alert(err.Message);
 		}
 	})
