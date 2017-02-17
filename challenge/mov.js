@@ -21,7 +21,7 @@ function get_data(movie_name)
 		{	
 			if(!data.Error)
 			{	
-                                $('#search').prop("disabled",false);
+                $('#search').prop("disabled",false);               
 				var movie_details=document.getElementById('library');
 				$(movie_details).html('');
 				movies.push(data);
@@ -30,12 +30,13 @@ function get_data(movie_name)
 			if(data.Error)
 			{
 				alert(data.Error);
-                                return false;
-
+                $('#search').prop("disabled",false);
+                return false;
 			}		
 		},
 		error: function(xhr, status, error) {
 		  var err = eval("(" + xhr.responseText + ")");
+		  $('#search').prop("disabled",false);
 		  alert(err.Message);
 		}
 	})
@@ -157,6 +158,7 @@ function update_library()
 					
 					var Plot=document.createElement('div');
 					$(Plot).addClass('row');
+					$(Plot).css('text-align','justify');
 					$(Plot).html("<label><b>Plot:</b></label> "+movies[i].Plot);
 					$(empty_2).append(Plot);
 					
