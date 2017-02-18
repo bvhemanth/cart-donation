@@ -415,15 +415,23 @@ function update_library()
 			$(movie_details).append(each_row);	
 			var review=document.createElement('div');
 			$(review).addClass('row');
-				var wrt_rev=document.createElement('label');
-                $(wrt_rev).html('Write review');
-                $(review).append(wrt_rev); 
+		        var wrt_rev=document.createElement('label');
+                        $(wrt_rev).html('Write review');
+                        $(review).append(wrt_rev); 
 				var review_tex=document.createElement('textarea');
 				$(review_tex).css('width','100%');
 				$(review_tex).addClass('form-control');
 				$(review_tex).attr('placeholder','add review ...');
 			$(review).append(review_tex);
-			$(movie_details).append(review);	
+                         var btn_row=document.createElement('div');
+                        $(btn_row).addClass('row'); 
+                                var r_btn=document.createElement('button');
+                                $(r_btn).addClass('btn btn-success btn-block');
+                                $(r_btn).html('Add Review'); 
+                        $(btn_row).append(r_btn);
+                         $(review).append(btn_row);   
+               $(movie_details).append(review);                
+	
 	}
 	
 }
